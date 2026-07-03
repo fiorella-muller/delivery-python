@@ -4,13 +4,13 @@
 **Escenario asignado:** N° 15 — Sistema de Delivery
 
 ## Integrantes del grupo
-- Nombre y Apellido 1
-- Nombre y Apellido 2
-- Nombre y Apellido 3
-- (Agregar/quitar según la cantidad real de integrantes: 3 a 5)
+- Lopez, Tomas
+- Montenegro, Mateo
+- Müller, Fiorella
+- Sosa, Mía
 
 ## Comisión
-- Completar con el número/nombre de comisión.
+k1.1
 
 ## Descripción general del sistema
 
@@ -74,16 +74,14 @@ módulos propios y la biblioteca estándar de Python.
 
 ## Uso de Inteligencia Artificial
 
-- **Herramienta utilizada:** Completar (ej. ChatGPT, Claude, Copilot, etc.)
-- **Para qué se utilizó:** Completar (ej. generar la estructura inicial
+- **Herramienta utilizada:**  ChatGPT, Claude
+- **Para qué se utilizó:** para generar la estructura inicial
   del código, resolver dudas puntuales sobre manejo de errores,
   proponer la organización en módulos, asistir en la redacción del
-  README, etc.)
-- **Cómo se utilizó:** Completar (ej. se revisó y discutió en equipo
+  README, etc.
+- **Cómo se utilizó:** se revisó y discutió en equipo
   cada fragmento de código generado antes de incorporarlo, se
   modificaron nombres de variables y lógica para adaptarlo a lo visto
-  en clase, se probó manualmente cada funcionalidad, etc.)
+  en clase, se probó manualmente cada funcionalidad, etc.
 
-> Importante: cada integrante debe poder explicar y justificar
-> cualquier parte del código durante el coloquio, incluidas las
-> partes trabajadas con asistencia de IA.
+
