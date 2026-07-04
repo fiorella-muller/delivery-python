@@ -28,6 +28,21 @@ def calcular_descuento(subtotal):
         return round(subtotal * PORCENTAJE_DESCUENTO, 2)
     return 0.0
 
+
+def calcular_promocion_2x1_bebidas(items):
+    """
+    Promoción 2x1 en bebidas: por cada 2 unidades de un mismo
+    producto de la categoría 'Bebidas', se descuenta el valor
+    de una unidad.
+    """
+    descuento_promo = 0.0
+    for id_producto, cantidad, nombre_producto, precio_unitario in items:
+        producto = productos.obtener_producto(id_producto)
+        if producto["categoria"] == "Bebidas":
+            unidades_gratis = cantidad // 2
+            descuento_promo += unidades_gratis * precio_unitario
+    return descuento_promo
+
 def crear_pedido(cliente, items, id_zona, medio_pago):
     """
     Crea un nuevo pedido a partir de los datos ingresados.
@@ -36,9 +51,9 @@ def crear_pedido(cliente, items, id_zona, medio_pago):
     """
     subtotal = sum(cantidad * precio for _, cantidad, _, precio in items)
     zona = zonas.obtener_zona(id_zona)
-    costo_envio = zona["costo_envio"]
     descuento = calcular_descuento(subtotal)
-    total = subtotal + costo_envio - descuento
+    promo_bebidas = calcular_promocion_2x1_bebidas(items)
+    total = subtotal + costo_envio - descuento - promo_bebidas
 
     pedido = {
         "id": len(lista_pedidos) + 1,
@@ -49,6 +64,7 @@ def crear_pedido(cliente, items, id_zona, medio_pago):
         "subtotal": subtotal,
         "envio": costo_envio,
         "descuento": descuento,
+        "promo_bebidas": promo_bebidas,
         "total": total,
         "estado": "Pendiente",
     }
@@ -101,6 +117,7 @@ def mostrar_pedido(pedido):
     print(f"Subtotal    : $ {pedido['subtotal']:.2f}")
     print(f"Envío       : $ {pedido['envio']:.2f}")
     print(f"Descuento   : $ {pedido['descuento']:.2f}")
+    print(f"Promo 2x1 bebidas: $ {pedido['promo_bebidas']:.2f}")
     print(f"TOTAL       : $ {pedido['total']:.2f}")
     print(f"Estado      : {pedido['estado']}")
     print("-----------------------------\n")
