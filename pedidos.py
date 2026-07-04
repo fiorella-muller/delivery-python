@@ -113,7 +113,7 @@ def mostrar_pedido(pedido):
     print(f"Medio de pago: {pedido['medio_pago']}")
     print("Detalle:")
     for id_producto, cantidad, nombre_producto, precio_unitario in pedido["items"]:
-        print(f"  - {nombre_producto} x{cantidad} = $ {cantidad * precio_unitario:.2f}")
+    print(f"  - {nombre_producto} x{cantidad} = $ {cantidad * precio_unitario:.2f}")
     print(f"Subtotal    : $ {pedido['subtotal']:.2f}")
     print(f"Envío       : $ {pedido['envio']:.2f}")
     print(f"Descuento   : $ {pedido['descuento']:.2f}")
