@@ -51,6 +51,7 @@ def crear_pedido(cliente, items, id_zona, medio_pago):
     """
     subtotal = sum(cantidad * precio for _, cantidad, _, precio in items)
     zona = zonas.obtener_zona(id_zona)
+    costo_envio = zona["costo_envio"]
     descuento = calcular_descuento(subtotal)
     promo_bebidas = calcular_promocion_2x1_bebidas(items)
     total = subtotal + costo_envio - descuento - promo_bebidas
@@ -113,14 +114,14 @@ def mostrar_pedido(pedido):
     print(f"Medio de pago: {pedido['medio_pago']}")
     print("Detalle:")
     for id_producto, cantidad, nombre_producto, precio_unitario in pedido["items"]:
-    print(f"  - {nombre_producto} x{cantidad} = $ {cantidad * precio_unitario:.2f}")
-    print(f"Subtotal    : $ {pedido['subtotal']:.2f}")
-    print(f"Envío       : $ {pedido['envio']:.2f}")
-    print(f"Descuento   : $ {pedido['descuento']:.2f}")
-    print(f"Promo 2x1 bebidas: $ {pedido['promo_bebidas']:.2f}")
-    print(f"TOTAL       : $ {pedido['total']:.2f}")
-    print(f"Estado      : {pedido['estado']}")
-    print("-----------------------------\n")
+        print(f"{nombre_producto} x{cantidad} = $ {cantidad * precio_unitario:.2f}")
+        print(f"Subtotal    : $ {pedido['subtotal']:.2f}")
+        print(f"Envío       : $ {pedido['envio']:.2f}")
+        print(f"Descuento   : $ {pedido['descuento']:.2f}")
+        print(f"Promo 2x1 bebidas: $ {pedido['promo_bebidas']:.2f}")
+        print(f"TOTAL       : $ {pedido['total']:.2f}")
+        print(f"Estado      : {pedido['estado']}")
+        print("-----------------------------\n")
 
 
 def mostrar_todos_los_pedidos():
