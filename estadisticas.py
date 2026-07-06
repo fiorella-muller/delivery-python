@@ -1,23 +1,12 @@
-"""
-Módulo de estadísticas.
-Mantiene acumuladores y contadores que se actualizan a medida
-que el sistema procesa pedidos, y permite mostrarlos en pantalla.
-"""
-
-# ----- Acumuladores y contadores globales del sistema -----
 total_pedidos = 0
 total_facturado = 0.0
 pedidos_entregados = 0
 pedidos_cancelados = 0
-ventas_por_zona = {}       # {nombre_zona: monto_acumulado}
-ventas_por_producto = {}   # {nombre_producto: cantidad_vendida}
+ventas_por_zona = {}       
+ventas_por_producto = {}   
 
 
 def registrar_nuevo_pedido(pedido, nombre_zona):
-    """
-    Actualiza los acumuladores y contadores cuando se genera un
-    nuevo pedido en el sistema.
-    """
     global total_pedidos, total_facturado
 
     total_pedidos += 1
@@ -32,7 +21,6 @@ def registrar_nuevo_pedido(pedido, nombre_zona):
 
 
 def registrar_cambio_estado(nuevo_estado):
-    """Actualiza contadores cuando un pedido cambia de estado."""
     global pedidos_entregados, pedidos_cancelados
 
     if nuevo_estado == "Entregado":
@@ -42,7 +30,6 @@ def registrar_cambio_estado(nuevo_estado):
 
 
 def mostrar_estadisticas():
-    """Muestra por consola un resumen estadístico del día."""
     print("\n========== ESTADÍSTICAS DEL DÍA ==========")
     print(f"Total de pedidos realizados : {total_pedidos}")
     print(f"Pedidos entregados          : {pedidos_entregados}")
