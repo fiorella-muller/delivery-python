@@ -6,6 +6,7 @@ Escenario 15: Sistema de Delivery
 Permite gestionar pedidos, calcular importes, controlar
 entregas y visualizar estadísticas de ventas y zonas de reparto.
 """
+from datetime import datetime
 
 import productos
 import zonas
@@ -15,6 +16,13 @@ from validaciones import leer_entero, leer_texto_no_vacio, leer_si_no
 
 MEDIOS_DE_PAGO = {1: "Efectivo", 2: "Tarjeta de débito/crédito", 3: "Mercado Pago"}
 
+HORA_APERTURA = 10
+HORA_CIERRE = 23
+
+def dentro_del_horario_de_atencion():
+    """Devuelve True si la hora actual está dentro del horario de atención."""
+    hora_actual = datetime.now().hour
+    return HORA_APERTURA <= hora_actual < HORA_CIERRE
 
 def mostrar_menu_principal():
     print("\n========== SISTEMA DE DELIVERY ==========")
@@ -60,9 +68,15 @@ def armar_items_del_pedido():
 
     return items
 
-
 def opcion_realizar_pedido():
     """Flujo completo para cargar un nuevo pedido en el sistema."""
+    if not dentro_del_horario_de_atencion():
+        print(
+            f"\nLo sentimos, el horario de atención es de {HORA_APERTURA}:00 "
+            f"a {HORA_CIERRE}:00 hs. Intente nuevamente más tarde.\n"
+        )
+        return
+
     print("\n--- NUEVO PEDIDO ---")
     cliente = leer_texto_no_vacio("Ingrese el nombre del cliente: ")
 
