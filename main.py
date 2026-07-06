@@ -1,11 +1,3 @@
-"""
-Sistema de Delivery - Trabajo Final Integrador
-Algoritmos y Estructuras de Datos - ISI - Ciclo 2026
-
-Escenario 15: Sistema de Delivery
-Permite gestionar pedidos, calcular importes, controlar
-entregas y visualizar estadísticas de ventas y zonas de reparto.
-"""
 from datetime import datetime
 
 import productos
@@ -20,7 +12,6 @@ HORA_APERTURA = 10
 HORA_CIERRE = 23
 
 def dentro_del_horario_de_atencion():
-    """Devuelve True si la hora actual está dentro del horario de atención."""
     hora_actual = datetime.now().hour
     return HORA_APERTURA <= hora_actual < HORA_CIERRE
 
@@ -35,7 +26,6 @@ def mostrar_menu_principal():
 
 
 def seleccionar_medio_de_pago():
-    """Muestra las opciones de pago y devuelve la elegida."""
     print("\nMedios de pago disponibles:")
     for id_medio, nombre in MEDIOS_DE_PAGO.items():
         print(f"  [{id_medio}] {nombre}")
@@ -44,10 +34,6 @@ def seleccionar_medio_de_pago():
 
 
 def armar_items_del_pedido():
-    """
-    Permite al usuario agregar productos al pedido de forma repetida
-    hasta que decida finalizar la carga. Devuelve la lista de items.
-    """
     items = []
     productos.mostrar_catalogo()
 
@@ -69,7 +55,6 @@ def armar_items_del_pedido():
     return items
 
 def opcion_realizar_pedido():
-    """Flujo completo para cargar un nuevo pedido en el sistema."""
     if not dentro_del_horario_de_atencion():
         print(
             f"\nLo sentimos, el horario de atención es de {HORA_APERTURA}:00 "
