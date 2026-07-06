@@ -15,7 +15,6 @@ CATALOGO = {
     7: {"nombre": "Gaseosa 500ml", "categoria": "Bebidas", "precio": 1500},
     8: {"nombre": "Agua Mineral", "categoria": "Bebidas", "precio": 1200},
     9: {"nombre": "Cerveza Artesanal", "categoria": "Bebidas", "precio": 2800},
-    10: {"nombre": "Helado Postre", "categoria": "Postres", "precio": 2600},
 }
 
 
