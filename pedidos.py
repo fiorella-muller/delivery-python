@@ -1,17 +1,9 @@
-"""
-Módulo de pedidos.
-Gestiona la creación de pedidos, el cálculo de importes,
-la aplicación de descuentos y el control de estados.
-"""
-
 import productos
 import zonas
 import estadisticas
 
-# Estados posibles que puede tener un pedido a lo largo de su ciclo de vida
 ESTADOS_VALIDOS = ["Pendiente", "En preparación", "En camino", "Entregado", "Cancelado"]
 
-# Estructura donde se almacenan todos los pedidos del sistema
 lista_pedidos = []
 
 MONTO_MINIMO_DESCUENTO = 10000
@@ -19,22 +11,12 @@ PORCENTAJE_DESCUENTO = 0.10
 
 
 def calcular_descuento(subtotal):
-    """
-    Calcula el descuento aplicable a un pedido.
-    Promoción: 10% de descuento en pedidos cuyo subtotal
-    sea mayor o igual a $10000.
-    """
     if subtotal >= MONTO_MINIMO_DESCUENTO:
         return round(subtotal * PORCENTAJE_DESCUENTO, 2)
     return 0.0
 
 
 def calcular_promocion_2x1_bebidas(items):
-    """
-    Promoción 2x1 en bebidas: por cada 2 unidades de un mismo
-    producto de la categoría 'Bebidas', se descuenta el valor
-    de una unidad.
-    """
     descuento_promo = 0.0
     for id_producto, cantidad, nombre_producto, precio_unitario in items:
         producto = productos.obtener_producto(id_producto)
@@ -44,11 +26,6 @@ def calcular_promocion_2x1_bebidas(items):
     return descuento_promo
 
 def crear_pedido(cliente, items, id_zona, medio_pago):
-    """
-    Crea un nuevo pedido a partir de los datos ingresados.
-    'items' es una lista de tuplas (id_producto, cantidad, nombre_producto, precio_unitario).
-    Devuelve el diccionario del pedido creado.
-    """
     subtotal = sum(cantidad * precio for _, cantidad, _, precio in items)
     zona = zonas.obtener_zona(id_zona)
     costo_envio = zona["costo_envio"]
@@ -76,7 +53,6 @@ def crear_pedido(cliente, items, id_zona, medio_pago):
 
 
 def buscar_pedido(id_pedido):
-    """Busca un pedido por su id. Devuelve None si no existe."""
     for pedido in lista_pedidos:
         if pedido["id"] == id_pedido:
             return pedido
@@ -84,10 +60,6 @@ def buscar_pedido(id_pedido):
 
 
 def cambiar_estado(id_pedido, nuevo_estado):
-    """
-    Cambia el estado de un pedido validando reglas de negocio básicas.
-    Devuelve una tupla (exito: bool, mensaje: str).
-    """
     pedido = buscar_pedido(id_pedido)
 
     if pedido is None:
@@ -107,7 +79,6 @@ def cambiar_estado(id_pedido, nuevo_estado):
 
 
 def mostrar_pedido(pedido):
-    """Imprime en consola el detalle completo de un pedido."""
     print(f"\n----- Pedido N° {pedido['id']} -----")
     print(f"Cliente     : {pedido['cliente']}")
     print(f"Zona        : {pedido['zona']}")
@@ -125,7 +96,6 @@ def mostrar_pedido(pedido):
 
 
 def mostrar_todos_los_pedidos():
-    """Muestra por consola todos los pedidos cargados en el sistema."""
     if not lista_pedidos:
         print("\nAún no se registraron pedidos en el sistema.\n")
         return
