@@ -1,7 +1,7 @@
 # Sistema de Delivery — Trabajo Final Integrador
 
 **Materia:** Algoritmos y Estructuras de Datos — ISI — Ciclo 2026
-**Grupo:** A24
+**Grupo:** A23
 **Escenario asignado:** N° 15 — Sistema de Delivery
 
 ## Integrantes del grupo
