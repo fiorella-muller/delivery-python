@@ -1,10 +1,3 @@
-"""
-Módulo de productos.
-Contiene el catálogo de productos del servicio de delivery
-y las funciones para consultarlo.
-"""
-
-# Catálogo de productos: {id: {nombre, categoria, precio}}
 CATALOGO = {
     1: {"nombre": "Hamburguesa Simple", "categoria": "Comidas", "precio": 3500},
     2: {"nombre": "Hamburguesa Doble", "categoria": "Comidas", "precio": 4800},
@@ -19,7 +12,6 @@ CATALOGO = {
 
 
 def mostrar_catalogo():
-    """Muestra el catálogo de productos agrupado por categoría."""
     print("\n===== CATÁLOGO DE PRODUCTOS =====")
     categorias = sorted(set(p["categoria"] for p in CATALOGO.values()))
     for categoria in categorias:
@@ -31,10 +23,8 @@ def mostrar_catalogo():
 
 
 def producto_existe(id_producto):
-    """Devuelve True si el id de producto existe en el catálogo."""
     return id_producto in CATALOGO
 
 
 def obtener_producto(id_producto):
-    """Devuelve el diccionario del producto o None si no existe."""
     return CATALOGO.get(id_producto)
