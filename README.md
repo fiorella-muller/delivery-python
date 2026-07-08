@@ -73,6 +73,13 @@ ejecutándose por consola. Permite:
 No se requieren librerías externas: el sistema utiliza únicamente
 módulos propios y la biblioteca estándar de Python.
 
+## Video explicativo
+
+El siguiente video, realizado por el grupo, explica el funcionamiento
+del sistema y las decisiones tomadas durante su desarrollo:
+
+[Ver video explicativo](https://drive.google.com/file/d/11lJ6sI3KsL_-chZhFTke8EZ1BW3t9GOO/view?usp=drive_link)
+
 ## Uso de Inteligencia Artificial
 
 - **Herramienta utilizada:**  ChatGPT, Claude
